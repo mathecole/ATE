@@ -14,7 +14,7 @@ while(jouer == "o"):
     elif(nombre_guess < nombre_mystere):
       print("le nombre est plus grand")
 
-    essais += 1
+    essais +=1
     guess.append(nombre_guess)
     nombre_guess = int(input("non c'est pas %s, btw ça fait %s fois que t'essaye"%(nombre_guess, essais)))
     if nombre_guess in guess:
