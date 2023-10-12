@@ -7,10 +7,13 @@ force = 0
 adversaire = 0
 defaite = 0
 victoire = 0
-def interaction(vie, force, combats, adversaire, defaite, victoire):
+def interaction(force, combats, adversaire):
+    global defaite
+    global victoire
+    global vie
     action=0
-    print(" Adversaire: %s\n Force de l'adversaire: %s\n Niveau de vie: %s\n Combats %s: victoires %s et défaites %s"%(adversaire, force, vie, combats, victoire, defaite))
     while(action != 1 or action != 2 or action != 3 or action != 4):
+        print("\n Adversaire: %s\n Force de l'adversaire: %s\n Niveau de vie: %s\n Combats %s: victoires %s et défaites %s" % (adversaire, force, vie, combats, victoire, defaite))
         action = input(str("Que voulez-vous faire ?\n1- Combattre l'adversaire\n2- Fuir\n3- Règles\n4- Quitter\n"))
         if action == "1":
             print("roulement de dés...")
@@ -18,7 +21,7 @@ def interaction(vie, force, combats, adversaire, defaite, victoire):
             print("vous avez roulez %s"%attaque)
             if attaque < force:
                 vie -= force
-                print("vous avez perdu %s points de vie, vous avez maintenant %s points de vie"%(force, vie))
+                print("vous avez perdu %s points de vie, vous avez maintenant %s points de vie\n"%(force, vie))
                 defaite += 1
             elif attaque > force:
                 vie += force
@@ -29,8 +32,8 @@ def interaction(vie, force, combats, adversaire, defaite, victoire):
             defaite += 1
             print("Vous possèdez maintenant %s défaites"%defaite)
         elif action == "3":
-            print("Voici les règles du jeu.\n Vous commencez la partie avec 20 points de vies, vôtre tâche sera d'accumuler")
-            print("le plus de victoires possibles, pour vaincre ces adversaires vous allez devoir")
+            print(" Voici les règles du jeu.\n Vous commencez la partie avec 20 points de vies, vôtre tâche sera d'accumuler")
+            print(" le plus de victoires possibles, pour vaincre ces adversaires vous allez devoir")
         elif action == "4":
             print("Le code va s'arreter")
             quit()
@@ -39,5 +42,5 @@ def interaction(vie, force, combats, adversaire, defaite, victoire):
 while(vie>0):
     adversaire += 1
     force = random.randint(1, 5)
-    interaction(vie, force, combats, adversaire, defaite, victoire)
+    interaction(force, combats, adversaire)
     combats +=1
