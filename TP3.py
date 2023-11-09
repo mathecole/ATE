@@ -14,7 +14,7 @@ def setup():
     global bossmode
     global twocards
     retry = 1
-    while(True):
+    while True:
         bossmode = input("Ce jeu possède manières de jouer, souhaitez vous\n 1- Jouer avec un Boss\n 2- Jouer sans boss")
         twocards = input("Vous pouvez aussi jouer avec un ou deux dés, les ennemis dans le mode à 2 dés sont plus forts.\n"
                          " 1-Jouer avec un dé\n 2- Jouer avec deux dés")
@@ -47,9 +47,9 @@ def interaction(force, combats, adversaire):
         action = input(str("Que voulez-vous faire ?\n1- Combattre l'adversaire\n2- Fuir\n3- Règles\n4- Quitter\n"))
         if action == "1":
             print("roulement de dés...")
-            attaque = random.randint(1,6) + random.randint(1,6)
-            print("La somme de vos dés est %s"%attaque)
-            if attaque <= force:
+            attaque1 = random.randint(1,6)
+            print("Votre premier d%s"%attaque1)
+            if attaque1 + attaque2 <= force:
                 vie -= force
                 print("vous avez perdu %s points de vie, vous avez maintenant %s points de vie\n"%(force, vie))
                 defaite += 1
@@ -86,6 +86,8 @@ while(vie>0):
         boss = 0
     elif twocards == 2:
         force = random.randint(2, 8)
+    else:
+
     interaction(force, combats, adversaire)
     combats +=1
 print("\nVous avez perdu")
