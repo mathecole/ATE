@@ -8,24 +8,33 @@ adversaire = 0
 defaite = 0
 victoire = 0
 boss = 0
+twocards = 0
+bossmode = 0
 def setup():
-    retry = True
-    While(retry):
-
+    global bossmode
+    global twocards
+    retry = 1
+    while(True):
         bossmode = input("Ce jeu possède manières de jouer, souhaitez vous\n 1- Jouer avec un Boss\n 2- Jouer sans boss")
         twocards = input("Vous pouvez aussi jouer avec un ou deux dés, les ennemis dans le mode à 2 dés sont plus forts.\n"
                          " 1-Jouer avec un dé\n 2- Jouer avec deux dés")
         if bossmode == "1":
             print("Boss activé")
-        if bossmode == "2":
+        elif bossmode == "2":
             print("Boss déasctivé")
+        else:
+            print("Une erreur a eu lieu avec ton choix, reessaye")
+            continue
         if twocards == "1":
             print("Un dé")
-        if twocards == "2":
+        elif twocards == "2":
             print("Deux dés")
-        retry = False
         else:
-            print("Une erreur à eu lieu avec votre sélection, veuillez réessayer")
+            print("Une erreur a eu lieu avec ton choix,reessaye")
+            continue
+        break
+
+
 
 def interaction(force, combats, adversaire):
     global defaite
@@ -71,11 +80,11 @@ def interaction(force, combats, adversaire):
 setup()
 while(vie>0):
     adversaire += 1
-    if boss == 3:
+    if boss == 3 and bossmode == 1:
         print("\nVous faites face à un boss, cet ennemi est bien plus puissant")
         force = random.randint(6,11)
         boss = 0
-    else:
+    elif twocards == 2:
         force = random.randint(2, 8)
     interaction(force, combats, adversaire)
     combats +=1
