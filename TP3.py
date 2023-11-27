@@ -43,6 +43,7 @@ def interaction(force, combats, adversaire):
     global twocards
     global bossmode
     action = 0
+    attaque2 = 0
     while True:
         print("\n Adversaire: %s\n Force de l'adversaire: %s\n Niveau de vie: %s\n Combats %s: victoires %s et défaites %s" % (adversaire, force, vie, combats, victoire, defaite))
         action = input(str("Que voulez-vous faire ?\n1- Combattre l'adversaire\n2- Fuir\n3- Règles\n4- Quitter\n"))
@@ -53,7 +54,7 @@ def interaction(force, combats, adversaire):
                 attaque2 = random.randint(1,6)
             attaque = attaque1 + attaque2
             print("La somme de tes dés est %s" % attaque)
-            if (attaque1 + attaque2) <= force:
+            if attaque <= force:
                 vie -= force
                 print("vous avez perdu %s points de vie, vous avez maintenant %s points de vie\n"%(force, vie))
                 defaite += 1
