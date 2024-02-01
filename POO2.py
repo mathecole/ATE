@@ -1,4 +1,4 @@
-import random
+    import random
 def diceroll():
     dice = []
     dice.append(random(4, 6))
