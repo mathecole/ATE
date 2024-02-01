@@ -1,6 +1,5 @@
 import arcade
 import random
-import time
 
 SCREEN_WIDTH = 960
 SCREEN_HEIGHT = 540
@@ -17,7 +16,7 @@ class Balle():
         self.rayon = random.randint(6, 15)
         self.color = random.choice(COLORS)
     def on_draw(self):
-        arcade.draw_criclefilled(self.x, self.y, self.rayon, color=self.color)
+        arcade.draw_circle_filled(self.x, self.y, self.rayon, color=self.color)
     def on_update(self):
         self.x += self.change_x
         self.y += self.change_y
@@ -43,7 +42,7 @@ class Rectangle():
         self.y += self.change_y
         if self.x > SCREEN_WIDTH - self.width:
             self.change_x *= -1
-        if self.Y > SCREEN_HEIGHT - self.height:
+        if self.y > SCREEN_HEIGHT - self.height:
             self.change_y *= -1
 
 
@@ -66,7 +65,7 @@ class MyGame(arcade.Window):
         for i in self.liste_rectangles:
             i.on_draw()
 
-    def on_update(self, float, delta_time):
+    def on_update(self, delta_time: float):
         for i in self.liste_balles:
             i.on_update()
         for i in self.liste_rectangles:
