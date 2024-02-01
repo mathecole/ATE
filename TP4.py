@@ -8,16 +8,16 @@ SCREEN_HEIGHT = 540
 COLORS = []
 
 
-class Balle(self, x, y):
-    def __init__(self):
+class Balle():
+    def __init__(self, x, y):
         self.x = x
         self.y = y
         self.change_x = random.randint(-4, 4)
         self.change_y = random.randint(-4, 4)
         self.rayon = random.randint(6, 15)
-        self.color = random.choice(Colours)
+        self.color = random.choice(COLORS)
     def on_draw(self):
-        arcade.draw_criclefilled(self.x, self.y, self.rayon, color = self.color)
+        arcade.draw_criclefilled(self.x, self.y, self.rayon, color=self.color)
     def on_update(self):
         self.x += self.change_x
         self.y += self.change_y
@@ -27,15 +27,15 @@ class Balle(self, x, y):
             self.change_y *= -1
 
 
-class Rectangle(self, x, y):
-    def __init__(self):
+class Rectangle():
+    def __init__(self, x, y):
         self.x = x
         self.y = y
         self.width = random.randint(4,6)
         self.height = random.randint(6,12)
         self.change_x = random.randint(-4, 4)
         self.change_y = random.randint(-4, 4)
-        self.color = random.choice(Colours)
+        self.color = random.choice(COLORS)
         self.angle = random.uniform(0,90)
 
     def on_update(self):
@@ -63,11 +63,14 @@ class MyGame(arcade.Window):
         arcade.start_render()
         for i in self.liste_balles:
             i.on_draw()
-        for i in self.liste_rectangles
+        for i in self.liste_rectangles:
             i.on_draw()
 
     def on_update(self, float, delta_time):
-        pass
+        for i in self.liste_balles:
+            i.on_update()
+        for i in self.liste_rectangles:
+            i. on_update()
 
     def on_mouse_press(self, x, y, modifiers, button):
         if button == arcade.MOUSE_BUTTON_LEFT:
@@ -80,8 +83,6 @@ class MyGame(arcade.Window):
 
 def main():
     my_game = MyGame()
-    my_game.setup()
-
     arcade.run()
 
 
