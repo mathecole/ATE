@@ -7,7 +7,7 @@ SCREEN_HEIGHT = 540
 COLORS = []
 
 
-class Balle():
+class Balle:
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -22,11 +22,11 @@ class Balle():
         self.y += self.change_y
         if self.x > SCREEN_WIDTH - self.rayon:
             self.change_y *= -1
-        if self.y > SCREEN_HEIGHT -self.rayon:
+        if self.y > SCREEN_HEIGHT - self.rayon:
             self.change_y *= -1
 
 
-class Rectangle():
+class Rectangle:
     def __init__(self, x, y):
         self.x = x
         self.y = y
@@ -47,7 +47,7 @@ class Rectangle():
 
 
     def on_draw(self):
-        arcade.draw_rectangle_filled(self.x, self.y, self.width, self.height, color = self.color, tilt_angle=self.angle)
+        arcade.draw_rectangle_filled(self.x, self.y, self.width, self.height, color=self.color, tilt_angle=self.angle)
 class MyGame(arcade.Window):
     def __init__(self):
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, "Exercice #1")
